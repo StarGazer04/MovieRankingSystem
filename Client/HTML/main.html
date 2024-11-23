@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <title>Movie Recommender</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header class = "header">
+            <h1>Welcome to Movie Recommender!</h1>
+        </header>
+        <div id="movie_app">
+            <!-- Search Bar -->
+            <h1>Movie Search</h1>
+            <input type="text" id="movie-search" placeholder="Enter a movie name">
+            <button id="add-movie">Add_Movie</button>
+            <p id="error-message" class="error"></p>
+
+            <!-- Unranked Movies Section -->
+             <h2 id="unranked-list">Unranked Movies</h2>
+             <ul>Unranked Movies</ul>
+
+            <!-- Get Movie Recommendations -->
+            <button id="get-recommendations">Get Recommendations</button>
+
+            <!--Ranked Movie Section-->
+            <h2>Ranked Movies</h2>
+            <ol id="ranked-list">Ranked Movies</ol>
+              
+        </div>
+    </body>
+</html>
