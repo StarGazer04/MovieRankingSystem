@@ -1,0 +1,463 @@
+/* Global box-sizing reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+/* body of main page */
+body{
+    position: relative;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    /*background-image: linear-gradient(to top, #ffffff, #e0d7f4, #cbbce7, #b7a2db, #a48acb);*/
+    background-image: linear-gradient(to bottom, #1b0034, #38036c, #611d9e, #8834bd, #a94ec8);
+    background-attachment: fixed; /* keeps the gradient fixed relative to the viewport */
+    background-size: cover; /* ensures the gradient covers the full height */
+    background-repeat: no-repeat; /*prevents tiling of the gradient */
+}
+
+/* header wrapper: contains title div, and buttons */
+#header-wrapper{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    /*background-color: #a48acb;*/
+    background-color:#320063;
+}
+    /* title section inside the header wrapper */
+#header-wrapper #Title{ /* title div: container that holds LumaRank title*/
+    position: relative;
+    height: 50px;
+    width: 250px;
+    left: 40px;
+    padding: 0;
+    display: inline-block;
+    color: rgba(255, 255, 155, 0.859);
+}
+
+#header-wrapper #Title #LumaRank{ /* LumaRank title: text */
+    position: relative;
+    font-size:20px;
+    width: 110px;
+    display: inline-block; 
+}
+
+#header-wrapper #Title i{ /* icon next to LumaRank title */
+    position: absolute;
+    top: 30%;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+    /* button wrapper section inside header wrapper: contains home, my ranked, and my unranked */
+#header-wrapper #header-button-wrapper{ /* button wrapper: container that holds buttons */
+    position: relative;
+    top: 0;
+    width: 30%;
+    height: 50px;
+    display: inline-flex;
+    margin-right: auto;
+    justify-content: space-between; /* ensures that the children will be evenly spaced */
+
+}
+
+#header-wrapper #header-button-wrapper .head-button{ /* head button class: represents all button inside button wrapper */
+    position: relative;
+    height: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #320063;
+    border: none;
+    font-size: 15px;
+    color: white;
+}
+
+.head-button:hover{
+    background-color: transparent !important; /* overwrites background color: hover state does not automatically overwrite it  */
+}
+
+#header-wrapper #search-bar{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin-right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header-wrapper #search-bar i{
+    color: white;
+    font-size: 25px;
+}
+
+#header-wrapper #menu-button-wrapper{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header-wrapper #menu-button-wrapper #menu-button{
+    background-color: transparent;
+    border: none;
+}
+
+#header-wrapper #menu-button-wrapper i{
+    color: white;
+    font-size: 30px;
+}
+
+/* -------menu pop up -------- */
+
+.menu-popup{
+    position:absolute;
+    width: 200px;
+    height: 300px;
+    top: 55px; /* border right under the header wrapper */
+    right: 10px; /* used to line up the upper traingle */
+    /*background-color: rgba(58, 29, 93, 0.65);*/
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 3px solid #a48acb;
+
+    &::after{
+        content: "";
+        position: absolute;
+        top: -15px;
+        left: 94%;
+        width: 0;
+        height: 0;
+        border: 10px solid transparent;
+        border-bottom-color:#a48acb;
+        border-top: 0;
+        margin-left: -20px;
+        
+    }
+}
+
+    /* display menu using js event listener */
+.menu-popup.is-active{
+    display: none;
+}
+
+.menu-popup .logout{
+    position: absolute;
+    width: calc(100%); /* subtracts (10px left padding + 10px right padding) */
+    height: 50px;
+    bottom: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 3.5px solid #a48acb;
+}
+
+.menu-popup .logout .logout-button{
+    position: absolute;
+    width: 95%;
+    height: 40px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50px;
+    border: 2px solid white;
+}
+
+.logout-button:hover{
+    background-color: rgb(255, 255, 255, .2);
+    color: white;
+}
+    
+/* ---------------------------- */
+
+
+/* container where suggested movies will be dynamically added */
+#suggested-wrapper{
+    position: relative;
+    width: 100%;
+    margin-top: 50px;
+}
+
+#suggested-wrapper #suggested-header{
+    position: relative;
+    left: 10px;
+    width: calc(100% - 10px); /* not cause horizontal overflow due to left: 10px */
+}
+
+#suggested-wrapper #suggested-header #suggested-movies-title{
+    text-decoration: none; /* removes underline */
+    font-size: 28px;
+    font-family: Arial, sans-serif;
+    font-weight:200;
+    color: white;
+}
+#suggested-wrapper #suggested-header #suggested-explore-more{
+    color: #008080;
+    opacity: 0; /* initially hidden */
+    visibility: hidden; /* not interactable */
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease;
+}
+
+#suggested-wrapper #suggested-header:hover #suggested-explore-more{
+    opacity: 1; /* fully visable */
+    visibility: visible;
+}
+
+#suggested-wrapper #suggested-movies{
+    position: relative;
+    min-height: 310px; /* height of hover image (280px) + padding (10px) x 2 + scroll bar height (10px) = 310px*/
+    display: flex; /* flex for its children */
+    flex-direction: row; /* children are horizonally alligned */
+    gap: 50px; /* space bewteen items */
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    overflow-x: auto; /* enables horizonal scrolling */
+    white-space: nowrap; /* prevents wrapping to the next line */
+    color: white;
+    
+}
+
+#suggested-wrapper #suggested-movies:hover::-webkit-scrollbar{
+    height: 10px;
+    background-color: transparent;
+}
+#suggested-wrapper #suggested-movies:hover::-webkit-scrollbar-thumb{
+    height: 10px;
+    border-radius: 9px;
+    background-color: rgba(241, 194, 241, 0.359);
+}
+
+
+#suggested-wrapper #suggested-movies #no-suggested-movie-message{
+    position: relative;
+    right: 25%; /* 25% right relative to its parents center position (since flex and "justify-content=center" was used*/
+    color: white;
+}
+
+/* container for watched movies */
+#watched-wrapper{
+    position: relative;
+    margin-top: 50px;
+    color: white;
+}
+
+#watched-wrapper #watched-movies-title{
+    position: relative;
+    left: 10px;
+    width: calc(100% - 10px);
+    font-weight: 200; 
+    font-size: 28px;
+    font-family: Arial, sans-serif;
+}
+
+#watched-wrapper #watched-movies{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    row-gap: 50px;
+    justify-content: center;
+    padding: 10px;
+    justify-items: center;
+    align-items: center;
+    overflow-y: auto; /* enables vertical scrolling */
+}
+
+/* --------------------------- (START) movie pop up ------------------------------ */
+
+.movie-popup{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 60%;
+    width: 60%;
+    display: flex;
+    background: linear-gradient(to bottom, #D8BFD8, #F3EAFD);
+    color: #320063; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* creats subtle shadow */
+    border: none;
+    border-radius: 9px;
+}
+
+.movie-popup-title{
+    position: relative;
+    left: 5px;
+    margin-right: 25px;
+}
+
+.movie-popup .movie{
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    width: auto; /* 3.5/5 of the height using aspect ratio below */
+    height: 70%;
+    aspect-ratio: 3.5 / 5;
+    transform: translateY(-50%);
+    border-radius: 9px;
+    overflow: hidden;
+}
+
+.movie-popup .movie-image{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    border: none;
+}
+
+.movie-popup-date-added{
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    width: calc(100% - 5px);
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.exit-movie-popup{
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    top: 5px;
+    right: 5px;
+    border: 2px solid #320063;
+    border-radius: 100px ;
+    background-color: transparent;
+
+    &:hover{
+        background-color: rgb(50,0,99, 0.3);
+    }
+}
+
+.movie-popup-info{
+    position: absolute;
+    right: 0;
+    top: 15%;
+    width: 60%;
+}
+
+.movie-popup-description{
+    position: absolute;
+    right: 0;
+    top: 30%;
+    width: 60%;
+    height: 150px;
+}
+
+#change-rank{
+    position: absolute;
+    right: 0;
+    top: 80%;
+    width: 55%;
+    height: 10%;
+    display: inline-block;
+    align-items: center;
+    background-color: transparent;
+}
+
+#change-rank #movie-rank-input{
+     width: 20%;
+     height: 75%;
+}
+
+#change-rank #submit-movie-rank{
+    width: 30%;
+    height: 75%;
+    border: 2px solid #320063;
+    border-radius: 20px;
+    background-color: transparent;
+
+    &:hover{
+        background-color: rgb(50,0,99, 0.3);
+    }
+}
+
+
+/* ----------------------------------- (END) movie pop up ------------------------------------- */
+
+/* dynamic content that will be added though backend below */
+
+/* movie contatiner: stores image, title, and date of the movie and displays it dynamically */
+.movie{
+    flex: 0 0 auto; /* does not squish movie images together */
+    height: 250px;
+    width: 175px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* image stays within container */
+}
+
+.movie:hover{
+    height: 280px;
+    width: 180px;
+}
+
+/* movie image */
+.movie .movie-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* fills the space */
+    border: 3px solid rgb(255, 255, 255, .4);
+}
+
+/* movie title: goes under the image */
+.movie .movie-title{
+    color: balck;
+}
+
+/* movie-year: goes under the movie title */
+.movie .movie-year{
+    color: black;
+}
+
+/* Small screen styles */
+@media (max-width: 1000px), (max-height: 500px) {
+
+    .movie-popup .movie-popup-info{
+        display: none;
+    }
+    .movie-popup-description {
+        display: none; /* Hides description */
+    }
+
+    #change-rank {
+        width: 100%;
+        min-height:20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #change-rank #submit-movie-rank{
+        position: relative;
+        height: 100%;
+    }
+
+    .movie-rank-lable {
+        display: flex; /* Ensures the label contents stay aligned */
+        align-items: center; /* Vertically center the text and input field */
+        font-size: 16px; /* Adjust font size as needed */
+    }
+
+    .movie-popup-date-added {
+        display: none; /* Hides date added */
+    }
+
+    .movie-popup {
+        padding: 15px;
+    }
+
+    .movie-popup .movie {
+        display: none;
+    }
+}

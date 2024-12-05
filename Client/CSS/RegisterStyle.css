@@ -87,7 +87,7 @@ body{
     border: 2px solid rgb(255, 255, 255, .2);
     font-size: 16px;
     color: black;
-    background-color: whitet;
+    background-color: white;
 }
 
 .button:hover{
@@ -96,7 +96,7 @@ body{
     border: 2px solid white;
 }
 
-.login-wrapper .login{
+.login-wrapper .login-link{
     width: 100%;
     text-align: center;
 }
