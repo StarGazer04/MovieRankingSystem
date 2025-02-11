@@ -23,7 +23,6 @@ body{
     height: 50px;
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     padding: 0;
     margin: 0;
@@ -34,8 +33,8 @@ body{
 #header-wrapper #Title{ /* title div: container that holds LumaRank title*/
     position: relative;
     height: 50px;
-    width: 250px;
-    left: 40px;
+    width: 150px;
+    left: 10px;
     padding: 0;
     display: inline-block;
     color: rgba(255, 255, 155, 0.859);
@@ -56,30 +55,38 @@ body{
 }
 
     /* button wrapper section inside header wrapper: contains home, my ranked, and my unranked */
-#header-wrapper #header-button-wrapper{ /* button wrapper: container that holds buttons */
+#header-wrapper #header-link-wrapper{ /* button wrapper: container that holds buttons */
     position: relative;
     top: 0;
     width: 30%;
     height: 50px;
     display: inline-flex;
+    align-items: center;
     margin-right: auto;
+    margin-left: 10%;
+    gap: 15px;
     justify-content: space-between; /* ensures that the children will be evenly spaced */
 
 }
 
-#header-wrapper #header-button-wrapper .head-button{ /* head button class: represents all button inside button wrapper */
+#header-wrapper #header-link-wrapper .header-link{ /* head button class: represents all button inside button wrapper */
     position: relative;
-    height: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #320063;
     border: none;
-    font-size: 15px;
-    color: white;
+    font-size: 18px;
 }
 
-.head-button:hover{
+.header-link a{
+    color: white;
+    text-decoration: none;
+
+    &:hover{
+        text-decoration: underline !important;
+    }
+}
+
+#header-wrapper a:hover{
     background-color: transparent !important; /* overwrites background color: hover state does not automatically overwrite it  */
+    text-decoration: underline;
 }
 
 #header-wrapper #search-bar{
@@ -262,15 +269,28 @@ body{
     position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    grid-gap: 15px;
     row-gap: 50px;
     justify-content: center;
     padding: 10px;
     justify-items: center;
     align-items: center;
     overflow-y: auto; /* enables vertical scrolling */
+    overflow: visible; /* allows movies to overflow when hovered if needed (only top row is concerned) */
+}
+
+.overlay{ 
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
 }
 
 /* --------------------------- (START) movie pop up ------------------------------ */
+
 
 .movie-popup{
     position: fixed;
@@ -279,12 +299,14 @@ body{
     transform: translate(-50%, -50%);
     height: 60%;
     width: 60%;
+    z-index: 1;
     display: flex;
     background: linear-gradient(to bottom, #D8BFD8, #F3EAFD);
     color: #320063; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* creats subtle shadow */
     border: none;
     border-radius: 9px;
+    display: none;
 }
 
 .movie-popup-title{
@@ -303,6 +325,12 @@ body{
     transform: translateY(-50%);
     border-radius: 9px;
     overflow: hidden;
+
+    /* offset the hover specification below */
+    &:hover{
+        width: auto;
+        height: 70%;
+    }
 }
 
 .movie-popup .movie-image{
@@ -384,6 +412,7 @@ body{
 
 /* ----------------------------------- (END) movie pop up ------------------------------------- */
 
+
 /* dynamic content that will be added though backend below */
 
 /* movie contatiner: stores image, title, and date of the movie and displays it dynamically */
@@ -392,14 +421,31 @@ body{
     height: 250px;
     width: 175px;
     display: flex;
-    justify-content: center;
+    justify-content: right; /* handles position of delte button */
     align-items: center;
     overflow: hidden; /* image stays within container */
 }
 
+.movie-delete{
+    display: none;
+    border-radius: 50px;
+    border: 2px solid #320063;
+    background-color: white;
+    color: #320063;
+}
+
 .movie:hover{
-    height: 280px;
-    width: 180px;
+    transform: scale(1.1);
+
+    /*Note: transform: scale(1.05) does not trigger reflow or push/pull sibling elements around.
+            The browser simply paints the element larger within its original bounding box.
+            think of this as css just visually enlarging the image*/
+}
+
+.movie:hover .movie-delete{
+        position: absolute;
+        align-self: flex-start; /* aligns entire grid item (including padding IMPORTANT!!!) with grid cell */
+        display: block; /* change display from none to block when movie is hovered over */
 }
 
 /* movie image */
@@ -427,7 +473,7 @@ body{
         display: none;
     }
     .movie-popup-description {
-        display: none; /* Hides description */
+        display: none; 
     }
 
     #change-rank {
@@ -444,13 +490,13 @@ body{
     }
 
     .movie-rank-lable {
-        display: flex; /* Ensures the label contents stay aligned */
-        align-items: center; /* Vertically center the text and input field */
-        font-size: 16px; /* Adjust font size as needed */
+        display: flex; 
+        align-items: center; 
+        font-size: 16px;
     }
 
     .movie-popup-date-added {
-        display: none; /* Hides date added */
+        display: none;
     }
 
     .movie-popup {

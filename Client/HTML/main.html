@@ -13,10 +13,16 @@
                 <h1 id="LumaRank">Luma Rank</h1>
                 <i class='bx bx-planet'></i>
             </div>
-            <div id="header-button-wrapper">
-                    <a href="main.html"><button class="head-button" id="Home">Home</button></a>
-                    <a href="#"><button class="head-button" id="MyRanked">My Ranked</button></a>
-                    <a href="#"><button class="head-button" id="MyUnranked">My Unranked</button></a>
+            <div id="header-link-wrapper">
+                <div class="header-link" id="home-link">
+                    <a href="main.html">Home</a>
+                </div>
+                <div class="header-link" id="home-link">
+                    <a href="main.html">My Ranked</a>
+                </div>
+                <div class="header-link" id="home-link">
+                    <a href="main.html">My Unranked</a>
+                </div>
             </div>
             <div id="search-bar">
                 <a href="#"><i class='bx bx-search-alt-2'></i></a>
@@ -65,12 +71,15 @@
                 <!-- watched movies will be dynamically added here -->
                 <div class="movie">
                     <img src="../../test.jpg" class="movie-image">
+                    <button class="movie-delete">X</button>
                  </div>
                  <div class="movie">
                     <img src="../../test.jpg" class="movie-image">
+                    <button class="movie-delete">X</button>
                  </div>
                  <div class="movie">
                     <img src="../../test.jpg" class="movie-image">
+                    <button class="movie-delete">X</button>
                  </div>
                  <div class="movie">
                     <img src="../../test.jpg" class="movie-image">
@@ -114,7 +123,7 @@
         <div class="overlay" id="overlay"></div>
 
         <!-- pop up when movie is clicked (watched only) -->
-         <div class="movie-popup">
+        <div class="movie-popup">
             <div class="movie-popup-title">
                 <!-- dynamically add movie title below -->
                 <h2>Eternal Sunshine of the Spotless Mind</h2>
@@ -126,22 +135,22 @@
                 <h4>Date added: </h4>
                 <!-- dynamically add date-added below -->
             </div>
-            
+                
             <button class="exit-movie-popup">X</button>
 
             <div class="movie-popup-info">
                 <h4>Rated: </h4>
-                <!-- dynamically add what movie is rated below -->
+                    <!-- dynamically add what movie is rated below -->
 
-                <!-- dynamically add the year the movie was made -->
-                 
-                <!-- dynamically add genre of movie below -->
+                    <!-- dynamically add the year the movie was made -->
+                    
+                    <!-- dynamically add genre of movie below -->
 
-                <!-- dynamically add movie length-->
+                    <!-- dynamically add movie length-->
             </div>
             <div class="movie-popup-description">
                 <!-- dynamically add movie description-->
-                 <p>hello world</p>
+                <p>hello world</p>
             </div>
 
             <form id="change-rank" action="">
