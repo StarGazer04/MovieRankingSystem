@@ -127,11 +127,11 @@ body{
 /* -------menu pop up -------- */
 
 .menu-popup{
-    position:absolute;
+    position:absolute !important;
     width: 200px;
     height: 300px;
-    top: 55px; /* border right under the header wrapper */
-    right: 10px; /* used to line up the upper traingle */
+    top: 55px !important; /* border right under the header wrapper */
+    right: 10px !important; /* used to line up the upper traingle */
     /*background-color: rgba(58, 29, 93, 0.65);*/
     background-color: rgba(0, 0, 0, 0.6);
     border: 3px solid #a48acb;

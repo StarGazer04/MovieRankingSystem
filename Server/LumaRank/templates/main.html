@@ -1,10 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang = "en">
     <head>
         <meta charset="UTF-8">
         <meta name = "viewport" content="width=device-width, initial-scale=1.0">
         <title>Movie Recommender</title>
-        <link rel="stylesheet" href="../CSS/main.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'CSS/main.css' %}">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     </head>
     <body>
@@ -15,22 +17,24 @@
             </div>
             <div id="header-link-wrapper">
                 <div class="header-link" id="home-link">
-                    <a href="main.html">Home</a>
+                    <a href="">Home</a>
                 </div>
                 <div class="header-link" id="home-link">
-                    <a href="main.html">My Ranked</a>
+                    <a href="">My Ranked</a>
                 </div>
                 <div class="header-link" id="home-link">
-                    <a href="main.html">My Unranked</a>
+                    <a href="">My Unranked</a>
                 </div>
             </div>
             <div id="search-bar">
-                <a href="../HTML/Search.html"><i class='bx bx-search-alt-2'></i></a>
+                <a href="{% url 'SearchPage' %}"><i class='bx bx-search-alt-2'></i></a>
             </div>
             <div id="menu-button-wrapper">
                 <button id="menu-button"><i class='bx bx-menu'></i></button>
             </div>
         </div>
+
+
         <div id="suggested-wrapper">
             <div id="suggested-header" onclick="window.location.href='#'";>
                 <a href="#" id="suggested-movies-title"> Suggested Movies </a>
@@ -40,28 +44,13 @@
                 <!--<p id="no-suggested-movie-message">&lt;&lt;No Suggested Movies at the moment&gt;&gt;</p>-->
                 <!-- suggested movies will be dynamically added here -->
                  <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
+                    <img src="{% static 'test.jpg' %}" class="movie-image">
                  </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
-                 </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
-                 </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
-                 </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
-                 </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
-                 </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
                  </div>
             </div>
         </div>
+        
+
         <div id="watched-wrapper">
             <div id="watched-header">
                 <h1 id="watched-movies-title">Watched Movies</h1>
@@ -70,54 +59,17 @@
                 <!--<p id="no-watched-movie-message">&lt;&lt;No Watched Movies at the moment&gt;&gt;</p>-->
                 <!-- watched movies will be dynamically added here -->
                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
+                    <img src="{% static 'test.jpg' %}" class="movie-image">
                     <button class="movie-delete">X</button>
-                 </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
-                    <button class="movie-delete">X</button>
-                 </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
-                    <button class="movie-delete">X</button>
-                 </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
-                 </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
-                 </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
-                 </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
-                 </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
-                 </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
-                 </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
-                 </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
-                 </div>
-                 <div class="movie">
-                    <img src="../../test.jpg" class="movie-image">
-                 </div>
+                </div>
             </div>
         </div>
 
         <!-- pop up for menu -->
         <div class="menu-popup" id="menu-popup">
             <div class="logout">
-                <a href="../HTML/Login.html"> <button class="logout-button">Logout</button> </a>
-            </div>
+                <a href="{% url 'logout' %}"> <button class="logout-button">Logout</button> </a> <!-- Django replaces  url 'login' with path defined in urls (project), and does not append to current URL. name is converted to .../LumaRank/Login.   -->            </div>
         </div>
-
 
         <!-- overlay: takes up full screen (fixed position) so user cant click outside of specified movie pop up border-->
         <div class="overlay" id="overlay"></div>
@@ -129,7 +81,7 @@
                 <h2>Eternal Sunshine of the Spotless Mind</h2>
             </div>
             <div class="movie">
-                <img src="../../test.jpg" class="movie-image">
+                <img src="{% static 'test.jpg' %}" class="movie-image">
             </div>
             <div class="movie-popup-date-added">
                 <h4>Date added: </h4>
@@ -162,6 +114,6 @@
 
          </div>
 
-        <script src="../JS/main.js"></script>
+        <script src="{% static 'JS/main.js' %}"></script>
     </body>
 </html>
