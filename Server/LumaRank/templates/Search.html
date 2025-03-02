@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <title>Movie Recommender</title>
+        <link rel="stylesheet" href="../CSS/Search.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <body>
+        <div id="header-wrapper">
+            <div id="Title">
+                <h1 id="LumaRank">Luma Rank</h1>
+                <i class='bx bx-planet'></i>
+            </div>
+            <div id="header-link-wrapper">
+                <div class="header-link" id="home-link">
+                    <a href="main.html">Home</a>
+                </div>
+                <div class="header-link" id="home-link">
+                    <a href="main.html">My Ranked</a>
+                </div>
+                <div class="header-link" id="home-link">
+                    <a href="main.html">My Unranked</a>
+                </div>
+            </div>
+            <div id="search-bar">
+                <input class='bx bx-search-alt-2'></input>
+            </div>
+            <div id="menu-button-wrapper">
+                <button id="menu-button"><i class='bx bx-menu'></i></button>
+            </div>
+        </div>
+
+        <!-- overlay: takes up full screen (fixed position) so user cant click outside of specified movie pop up border-->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- pop up for menu -->
+        <div class="menu-popup">
+            <div class="logout">
+                <a href="../HTML/Login.html"> <button class="logout-button">Logout</button> </a>
+            </div>
+        </div>
+        
+        <div id="Searched-Movies-Container">
+            <p>Searched Movies</p>
+            <div id="Searched-Movies">
+                <!-- dynamically add movies based on user search -->
+                <div class="movie">
+                    <img src="../../test.jpg" class="movie-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- pop up when movie is clicked (watched only) -->
+        <div class="movie-popup">
+            <div class="movie-popup-title">
+                <!-- dynamically add movie title below -->
+                <h2>Eternal Sunshine of the Spotless Mind</h2>
+            </div>
+            <div class="movie">
+                <img src="../../test.jpg" class="movie-image">
+            </div>
+            <div class="movie-popup-date-added">
+                <h4>Date added: </h4>
+                <!-- dynamically add date-added below -->
+            </div>
+                
+            <button class="exit-movie-popup">X</button>
+
+            <div class="movie-popup-info">
+                <h4>Rated: </h4>
+                    <!-- dynamically add what movie is rated below -->
+
+                    <!-- dynamically add the year the movie was made -->
+                    
+                    <!-- dynamically add genre of movie below -->
+
+                    <!-- dynamically add movie length-->
+            </div>
+            <div class="movie-popup-description">
+                <!-- dynamically add movie description-->
+                <p>Description: </p>
+            </div>
+
+            <form id="change-rank" action="">
+                <label class="movie-rank-lable"> Movie Rank:
+                    <input id="movie-rank-input" placeholder="(999)" required>
+                </label>
+                <button id="submit-movie-rank" type="submit">Add Movie</button>
+            </form>
+
+         </div>
+
+         <script src="../JS/search.js"></script>
+        
+    </body>
+</html>
