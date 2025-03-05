@@ -1,0 +1,72 @@
+02/28/2025
+
+    - Set up AWS account:
+        - Cloud watch alerts
+        - S3 bucket for movie images
+        - RDS for movie information
+
+    - Information learned:
+        * S3 bucket: Stores Object data such as images and documents for Movie System data
+        * RDS database: Stores structured data (tables, users, relationships) for user information
+
+
+03/01/2025 - VERY IMPORTANT
+
+    - Set up Django backend:
+        - created a Django project (MovieRankSite) and an app (MovieRankSystem). 
+            - Django documentation for project and app directoies/files:
+                - Project Folder: MovieRankSite/ 
+                    * This is the overall Django project, acting as the "container" for everything.
+                    * settings.py – Configuration file (e.g., database, installed apps, etc.).
+                    * urls.py – Defines project-level URL routing.
+                    * wsgi.py / asgi.py – Handles deployment settings.
+                    * __init__.py – Marks the folder as a Python package.
+                    * pycache/ – Stores compiled Python files for efficiency.
+                - App Folder: MovieRankSystem/
+                    * An app is a modular component inside the project.
+                    * models.py – Defines the database structure (tables).
+                    * views.py – Handles requests and returns responses.
+                    * urls.py – Defines app-specific URL routing.
+                    * migrations/ – Stores database migration files.
+                    * admin.py – Manages admin panel setup.
+                    * apps.py – App configuration.
+                    * tests.py – Contains test cases.
+                    * __init__.py – Marks the folder as a package.
+    - Modified App urls.py (URL routing for app)
+        - Created MovieRankSystem to define URL patterns for the app
+        * Maps the root URL to views.index
+    - Modified views.py (handling requests)
+        - Added an index function that takes an HTTP request and returns a response 
+            * When a user visits /MovieRankSystem/Django calls index() 
+            * HttpReponse() creates a plain text response that is sent to browser
+    - Modified project urls.py (global URL configuration)
+        - Linked project to the app 
+        * Tells django to load the apps urls.py when /MovieRankSystem/ is accessed 
+
+
+03/02/2025
+
+    - Set up Static folder inside LumaRank to store JS and CSS files
+    - Set up Template folder inside LumaRank to store HTML files 
+    - modified views.py and urls.py inside LumaRank to direct users to correct HTML files with a url change
+    - modifed HTML files to reference static CSS and JS files
+
+03/04/2025
+    - Set up Django admin account
+    - set up register authentication for a user
+    - Modify register.html file to update UI/UX design
+    - Password error handeling 
+
+    - Information to learn:
+        - Forms in django
+        - Pass in variables into rendered HTML documents 
+        - Creating a model 
+            * a model defines a dataset in Django. we used "model = User" to define a built in User model django has stored and defiend what fields of it we need.
+
+
+BY 03/12/2025
+    - Set up login authentication for user
+    - Modify login.html file to update UI/UX design
+
+
+

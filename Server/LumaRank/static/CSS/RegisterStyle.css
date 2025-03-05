@@ -4,7 +4,6 @@ body{
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    background-color:green;
     background-image: linear-gradient(to bottom, #1b0034, #38036c, #611d9e, #8834bd, #a94ec8);
 }
 
@@ -34,7 +33,7 @@ body{
     
 }
 
-.login-wrapper{
+.register-wrapper{
     position: absolute;
     width: 420px;
     top: 50%;
@@ -44,12 +43,12 @@ body{
     color:white;
 }
 
-.login-wrapper #login-header{
+.register-wrapper #login-header{
     font-size: 36px;
     text-align: center;
 }
 
-.login-wrapper .input-box{
+.register-wrapper .input-box{
     position: relative;
     background: transparent;
     height: 50px;
