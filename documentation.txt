@@ -53,20 +53,51 @@
 
 03/04/2025
     - Set up Django admin account
-    - set up register authentication for a user
+    - set up register authentication for users
     - Modify register.html file to update UI/UX design
     - Password error handeling 
 
-    - Information to learn:
+    - Information learned:
         - Forms in django
+        - Passing in HTML form into Django form
         - Pass in variables into rendered HTML documents 
         - Creating a model 
             * a model defines a dataset in Django. we used "model = User" to define a built in User model django has stored and defiend what fields of it we need.
 
+03/05/2025
+    - set up login authentication for users
+    - Re-defiend urls files to seperate login and register page
+    
+    - Infomration learned:
+        - How Django processes url patterns
+            * When Django starts the server, it loads all URL patterns including whats inside 'include()' and builds a lookup table that includes the Name and full path. If user types URL, then Django will check the first parameter
+              string and not 'Name'. For {% url ... %} and redirect(), Django will look for 'Name' and compare both in the lookup table. if Name is found in 'include()' then Django will add paths(first parameter) together.
+
+              ex. user types url: '/LumaRank/login'. Django will check top level first (/LumaRank/), to which it finds a match in project urls.py. It then enters the 'include' and looks for 'login/' inside it
+                  If it finds 'login/' it will load the view specified in the path argument in urls.py
+
+              ex. user is redirected to 'login'. Django knows the url patterns when the server loaded from the lookup table. it looks for 'login' in the table and will try to try to find a match. Django will load the specified view in the path argument
+                  if there is a match.
+                  
+        - Capturing HTML form inputs individually
+        - Name field in HTML input tag
+            * used to reference form elements
+        - Set up error messages for login and registration processes
+        - authentication() and login() standard methods in django
+        - Determining if user is already logged in or not 
 
 BY 03/12/2025
     - Set up login authentication for user
     - Modify login.html file to update UI/UX design
+
+
+PLANNING BOARD:
+    -Login user authentication
+        1. set up imports
+        2. create a token and POST into login.html Form
+        3. capture username and password in form
+        4. compare username and password with backend side
+        5. redirect user to main page
 
 
 

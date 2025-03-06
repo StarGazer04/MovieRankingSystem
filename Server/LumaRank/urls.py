@@ -12,9 +12,9 @@ from . import views #from current directory import views - imports views.py
 #             Django addds the url string (first param) to the global URL.
 urlpatterns = [
     path("", views.main, name="main") ,
-    path("login/", views.LoginPage, name="LoginPage"), 
+    #path("login/", views.LoginPage, name="LoginPage"), 
     path("logout/", views.logout_view, name="logout"), 
-    path("register/", views.RegisterPage, name="RegisterPage"),
+    #path("register/", views.RegisterPage, name="RegisterPage"),
     path("search/", views.SearchPage, name="SearchPage"),
 
 ]

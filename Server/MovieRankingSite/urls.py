@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from LumaRank import views
 
 #path fucntion expects route and view
 urlpatterns = [
-    path("LumaRank/", include("LumaRank.urls")),
+    path("LumaRank/", include("LumaRank.urls")), #Tells Django to stop checking urlpatterns in project folder and move to LumaRank.urls. LumaRank/ then becomes a prefix (appends it to current url) if the url name is found
+    path("login/", views.LoginPage, name='login'), #login page
+    path("register/", views.RegisterPage, name='register'), #register page
     path('admin/', admin.site.urls),
 ]
