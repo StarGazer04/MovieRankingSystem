@@ -78,7 +78,7 @@
 
               ex. user is redirected to 'login'. Django knows the url patterns when the server loaded from the lookup table. it looks for 'login' in the table and will try to try to find a match. Django will load the specified view in the path argument
                   if there is a match.
-                  
+
         - Capturing HTML form inputs individually
         - Name field in HTML input tag
             * used to reference form elements
@@ -86,18 +86,37 @@
         - authentication() and login() standard methods in django
         - Determining if user is already logged in or not 
 
-BY 03/12/2025
-    - Set up login authentication for user
-    - Modify login.html file to update UI/UX design
+03/06/2025
+    - re-organized Search.html and Search.css
+    - Created searchMovies() in search.js
+        *listens for input in search bar. If there is input then a timeout call is cleared and then created. Timeout will Call timerFunction() in search.js if user does not type for X seconds.
+    - Created listenTimer() in search.js
+        *acts as the function call inside the timeout. searches for movie results from TMDB API, and dynamically adds the searched results inside the search popup.
+    - Set up TMDB API
 
+    - Information learned:
+        - API calling using the TMDB API
+            *fetching
+        - Processing JSON return values
+        - setTimeout() function call
+            *waits x ms, then executes the function inside
+
+03/07/2025
+    - Quality of life changes for Search.html and Search.css
+        - Made search box smaller
+        - Re-organized serach results 
+    - Created the 'add' button
+    - Configured 'add' button dynamically in search.jss
+        - When user clicks on the button, its corresponding movie is printed to the dev consol
+
+    -Information learned:
+        - document.querySelectorAll('.class') and document.getElementById('id') only find elements that already exist in the DOM when the script runs.
+          If elements are added dynamically later (e.g. through TMDB API call), those calls will return an empty NodeList, and event listeners won’t attach.
 
 PLANNING BOARD:
-    -Login user authentication
-        1. set up imports
-        2. create a token and POST into login.html Form
-        3. capture username and password in form
-        4. compare username and password with backend side
-        5. redirect user to main page
+    - Test Search feature
+    - Configure AWS RDS with django
+    - User permissions
 
 
 

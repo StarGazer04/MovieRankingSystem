@@ -37,9 +37,11 @@
 
                 </div>
 
-                <button type="submit" class="button">Register</button>
+                {% for message in messages %}
+                <p style="color:red; "> <small class="error-message">{{ message }}</small></p>
+                {% endfor %}
 
-                {{ form.errors }}
+                <button type="submit" class="button">Register</button>
 
                 <div class="login-link">
                     <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
